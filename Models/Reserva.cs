@@ -17,43 +17,51 @@ namespace DesafioProjetoHospedagem.Models
         {
             // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
             // *IMPLEMENTE AQUI*
+            if (Suite.Capacidade >= hospedes.Count){
             if (true)
             {
                 Hospedes = hospedes;
+            }
             }
             else
             {
                 // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
                 // *IMPLEMENTE AQUI*
-            }
+                Exception exception = new Exception();
+                Console.WriteLine($"A capacidade da suíte não suporta a quantidade de hospedes {exception.Message}");
+                }
         }
 
         public void CadastrarSuite(Suite suite)
         {
+            if(suite != null){
             Suite = suite;
+            }else{
+                Console.WriteLine("Não foi possível adicionar uma Suíte.");
+            }
         }
 
         public int ObterQuantidadeHospedes()
         {
             // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
             // *IMPLEMENTE AQUI*
-            return 0;
+            var i=0;
+            foreach(Pessoa hospedes in Hospedes){
+                i++;
+            }
+            return i;
         }
 
         public decimal CalcularValorDiaria()
         {
-            // TODO: Retorna o valor da diária
-            // Cálculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
-            decimal valor = 0;
+            decimal valor = DiasReservados * Suite.ValorDiaria;
 
-            // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
-            // *IMPLEMENTE AQUI*
-            if (true)
-            {
-                valor = 0;
+            if(DiasReservados >= 10){
+                if (true)
+                {
+                    valor = valor * (1-(10m/100)) ;
+                }
             }
-
             return valor;
         }
     }
